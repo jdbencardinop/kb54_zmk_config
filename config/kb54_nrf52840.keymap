@@ -14,8 +14,8 @@
                 dlt: delete_layer_toggle {
                         compatible = "zmk,behavior-hold-tap";
                         #binding-cells = <2>;
-                        // flavor = "tap-preferred";
-                        flavor = "tap-unless-interrupted";
+                        flavor = "tap-preferred";
+                        // flavor = "tap-unless-interrupted";
                         tapping-term-ms = <150>;
                         quick-tap-ms = <300>;
                         hold-while-undecided;
@@ -72,7 +72,7 @@
                         bindings = <
    &kp ESC      &kp F1          &kp F2          &kp F3          &kp F4          &kp F5              &kp F6      &kp F7      &kp F8      &kp F9      &kp F10     &kp F11
    &kp TAB      &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4        &kp HOME    &kp PG_DN   &kp PG_UP   &kp END     &trans      &kp F12
-   &bt LCTRL    &trans          &trans          &trans          &trans          &trans              &kp LEFT    &kp DOWN    &kp UP      &kp RIGHT   &trans      &trans
+   &kp LCTRL    &trans          &trans          &trans          &trans          &trans              &kp LEFT    &kp DOWN    &kp UP      &kp RIGHT   &trans      &trans
    &kp LSHFT    &kp EXCL        &kp AT          &kp HASH        &kp DLLR        &kp PRCNT           &kp CARET   &kp AMPS    &kp ASTRK   &kp LPAR    &kp RPAR    &trans
                                                 &kp LGUI        &trans          &retltsp            &kp SPACE   &trans      &kp RALT
                         >;
