@@ -14,19 +14,28 @@
                 dlt: delete_layer_toggle {
                         compatible = "zmk,behavior-hold-tap";
                         #binding-cells = <2>;
-                        flavor = "tap-preferred";
-                        tapping-term-ms = <100>;
-                        quick-tap-ms = <200>;
+                        // flavor = "tap-preferred";
+                        flavor = "tap-unless-interrupted";
+                        tapping-term-ms = <150>;
+                        quick-tap-ms = <300>;
                         hold-while-undecided;
                         bindings = <&mo>, <&kp>;
                 };
 
-                retsp: return_space {
+                retltsp: return_layer_toggle_space {
                         compatible = "zmk,behavior-mod-morph";
                         #binding-cells = <0>;
-                        bindings = <&kp RET>, <&kp SPACE>;
+                        bindings = <&dlt 2 RET>, <&kp SPACE>;
                         mods = <(MOD_LGUI|MOD_RGUI)>;
                         keep-mods = <(MOD_LGUI|MOD_RGUI)>;
+                };
+        };
+
+        conditional_layers {
+                compatible = "zmk,conditional-layers";
+                tri_layer {
+                        if-layers = <1 2>;
+                        then-layer = <3>;
                 };
         };
 
@@ -41,13 +50,13 @@
 // |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BSPC |
 // | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
 // | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | ESC  |
-//                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
+//                    | GUI | LWR | RET |   | SPC | RSE  | ALT |
                         bindings = <
-   &kp GRAVE &kp N1 &kp N2 &kp N3 &kp N4 &kp N5         &kp N6 &kp N7 &kp N8    &kp N9  &kp N0   &kp DEL
-   &kp TAB   &kp Q  &kp W  &kp E  &kp R  &kp T          &kp Y  &kp U  &kp I     &kp O   &kp P    &kp BSPC
-   &kp LCTRL &kp A  &kp S  &kp D  &kp F  &kp G          &kp H  &kp J  &kp K     &kp L   &kp SEMI &kp SQT
-   &kp LSHFT &kp Z  &kp X  &kp C  &kp V  &kp B          &kp N  &kp M  &kp COMMA &kp DOT &kp FSLH &kp ESC
-                &mt LGUI SPACE &dlt 1 BSPC &retsp   &kp SPACE &dlt 2 DEL &mt RALT RET
+   &kp GRAVE    &kp N1    &kp N2    &kp N3            &kp N4         &kp N5          &kp N6       &kp N7        &kp N8          &kp N9     &kp N0      &kp DEL
+   &kp TAB      &kp Q     &kp W     &kp E             &kp R          &kp T           &kp Y        &kp U         &kp I           &kp O      &kp P       &kp BSPC
+   &kp LCTRL    &kp A     &kp S     &kp D             &kp F          &kp G           &kp H        &kp J         &kp K           &kp L      &kp SEMI    &kp SQT
+   &kp LSHFT    &kp Z     &kp X     &kp C             &kp V          &kp B           &kp N        &kp M         &kp COMMA       &kp DOT    &kp FSLH    &kp ESC
+                                    &mt LGUI SPACE    &dlt 1 BSPC    &retltsp        &kp SPACE    &dlt 2 DEL    &mt RALT RET
                         >;
                 };
 
@@ -55,17 +64,17 @@
                     display-name = "LWR";
                     label = "LWR";
 // -----------------------------------------------------------------------------------------
-// |   `  |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  |  DEL |
-// |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BSPC |
-// | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
-// | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
-//                    | GUI |     | SPC |   | ENT |     | ALT |
+// |  ESC | F1  | F2  | F3  | F4  | F5  |   | F6  | F7  | F8  | F9  | F10 |  F11 |
+// |  TAB | BT1 | BT2 | BT3 | BT4 | BT5 |   | HOME|PG_DN|PG_UP| END |     |  F12 |
+// | CTRL |     |     |     |     |     |   | LFT | DWN |  UP | RGT |     |      |
+// | SHFT |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  |      |
+//                    | GUI |     | RET |   | SPC |     | ALT |
                         bindings = <
-   &kp GRAVE    &kp N1          &kp N2          &kp N3          &kp N4          &kp N5                  &kp N6      &kp N7      &kp N8      &kp N9      &kp N0      &kp DEL
-   &kp TAB      &kp EXCL        &kp AT          &kp HASH        &kp DLLR        &kp PRCNT               &kp CARET   &kp AMPS    &kp ASTRK   &kp LPAR    &kp RPAR    &kp BSPC
-   &bt BT_CLR   &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4            &kp LEFT    &kp DOWN    &kp UP      &kp RIGHT   &trans      &trans
-   &kp LSHFT    &trans          &trans          &trans          &trans          &trans                  &trans      &trans      &trans      &trans      &trans      &trans
-                                                &kp LGUI        &trans          &kp SPACE               &kp RET     &trans      &kp RALT
+   &kp ESC      &kp F1          &kp F2          &kp F3          &kp F4          &kp F5              &kp F6      &kp F7      &kp F8      &kp F9      &kp F10     &kp F11
+   &kp TAB      &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4        &kp HOME    &kp PG_DN   &kp PG_UP   &kp END     &trans      &kp F12
+   &bt LCTRL    &trans          &trans          &trans          &trans          &trans              &kp LEFT    &kp DOWN    &kp UP      &kp RIGHT   &trans      &trans
+   &kp LSHFT    &kp EXCL        &kp AT          &kp HASH        &kp DLLR        &kp PRCNT           &kp CARET   &kp AMPS    &kp ASTRK   &kp LPAR    &kp RPAR    &trans
+                                                &kp LGUI        &trans          &retltsp            &kp SPACE   &trans      &kp RALT
                         >;
                 };
 
