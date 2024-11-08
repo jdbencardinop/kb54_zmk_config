@@ -15,7 +15,6 @@
                         compatible = "zmk,behavior-hold-tap";
                         #binding-cells = <2>;
                         flavor = "tap-preferred";
-                        // flavor = "tap-unless-interrupted";
                         tapping-term-ms = <150>;
                         quick-tap-ms = <300>;
                         hold-while-undecided;
@@ -52,11 +51,11 @@
 // | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | ESC  |
 //                    | GUI | LWR | RET |   | SPC | RSE  | ALT |
                         bindings = <
-   &kp GRAVE    &kp N1    &kp N2    &kp N3            &kp N4         &kp N5          &kp N6       &kp N7        &kp N8          &kp N9     &kp N0      &kp DEL
-   &kp TAB      &kp Q     &kp W     &kp E             &kp R          &kp T           &kp Y        &kp U         &kp I           &kp O      &kp P       &kp BSPC
-   &kp LCTRL    &kp A     &kp S     &kp D             &kp F          &kp G           &kp H        &kp J         &kp K           &kp L      &kp SEMI    &kp SQT
-   &kp LSHFT    &kp Z     &kp X     &kp C             &kp V          &kp B           &kp N        &kp M         &kp COMMA       &kp DOT    &kp FSLH    &kp ESC
-                                    &mt LGUI SPACE    &dlt 1 BSPC    &retltsp        &kp SPACE    &dlt 2 DEL    &mt RALT RET
+   &kp GRAVE    &kp N1    &kp N2    &kp N3      &kp N4         &kp N5          &kp N6       &kp N7        &kp N8          &kp N9     &kp N0      &kp DEL
+   &kp TAB      &kp Q     &kp W     &kp E       &kp R          &kp T           &kp Y        &kp U         &kp I           &kp O      &kp P       &kp BSPC
+   &kp LCTRL    &kp A     &kp S     &kp D       &kp F          &kp G           &kp H        &kp J         &kp K           &kp L      &kp SEMI    &kp SQT
+   &kp LSHFT    &kp Z     &kp X     &kp C       &kp V          &kp B           &kp N        &kp M         &kp COMMA       &kp DOT    &kp FSLH    &kp ESC
+                                    &kp LGUI    &dlt 1 BSPC    &retltsp        &kp SPACE    &dlt 2 DEL    &mt RALT RET
                         >;
                 };
 
@@ -74,7 +73,7 @@
    &kp TAB      &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4        &kp HOME    &kp PG_DN   &kp PG_UP   &kp END     &trans      &kp F12
    &kp LCTRL    &trans          &trans          &trans          &trans          &trans              &kp LEFT    &kp DOWN    &kp UP      &kp RIGHT   &trans      &trans
    &kp LSHFT    &kp EXCL        &kp AT          &kp HASH        &kp DLLR        &kp PRCNT           &kp CARET   &kp AMPS    &kp ASTRK   &kp LPAR    &kp RPAR    &trans
-                                                &kp LGUI        &trans          &retltsp            &kp SPACE   &trans      &kp LALT
+                                                &kp LGUI        &trans          &lt 2 SPACE         &kp RET     &trans      &kp LALT
                         >;
                 };
 
@@ -92,7 +91,7 @@
    &kp TAB      &kp C_BRI_UP    &kp HOME      &kp UP          &kp END         &kp PG_UP        &kp GRAVE    &kp SLASH    &kp NUHS /*Check later*/    &kp LPAR    &kp RPAR    &kp BSPC
    &kp LCTRL    &kp C_BRI_DN    &kp LEFT      &kp DOWN        &kp RIGHT       &kp PG_DN        &kp MINUS    &kp EQUAL    &kp LBKT                    &kp RBKT    &kp BSLH    &kp RET
    &kp LSHFT    &kp C_PREV      &kp C_NEXT    &kp C_VOL_DN    &kp C_VOL_UP    &kp C_PP         &kp UNDER    &kp PLUS     &kp LBRC                    &kp RBRC    &kp NUBS    &kp RSHFT
-                                              &kp LGUI        &trans          &kp SPACE        &kp RET      &trans       &kp RALT
+                                              &kp LGUI        &trans          &kp RET          &kp SPACE      &trans       &kp RALT
                         >;
                 };
 
